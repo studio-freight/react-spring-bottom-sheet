@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import cx from 'clsx'
 import styles from './Footer.module.css'
 
 function Badge({
@@ -41,8 +41,8 @@ export default function Footer({
         )}
       />
       <Badge name="react-spring-bottom-sheet" version={version} />
-      <Badge name="react-spring" version={reactSpringVersion} />
-      <Badge name="react-use-gesture" version={reactUseGestureVersion} />
+      <Badge name="@react-spring/web" version={reactSpringVersion} />
+      <Badge name="@use-gesture/react" version={reactUseGestureVersion} />
     </footer>
   )
 }

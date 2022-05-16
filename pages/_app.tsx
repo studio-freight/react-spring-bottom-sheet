@@ -2,11 +2,10 @@ import { inspect } from '@xstate/inspect'
 import type { InferGetStaticPropsType } from 'next'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { capitalize } from '../docs/utils'
-import { debugging } from '../src/utils'
-
 import '../docs/style.css'
+import { capitalize } from '../docs/utils'
 import '../src/style.css'
+import { debugging } from '../src/utils'
 
 // Setup xstate debugging, but only when in dev mode
 if (debugging) {
@@ -26,8 +25,8 @@ export async function getStaticProps() {
     { version: reactUseGestureVersion },
   ] = await Promise.all([
     import('../package.json'),
-    import('react-spring/package.json'),
-    import('react-use-gesture/package.json'),
+    import('@react-spring/web/package.json'),
+    import('@use-gesture/react/package.json'),
   ])
   if (!meta['og:site_name']) {
     meta['og:site_name'] = capitalize(name)

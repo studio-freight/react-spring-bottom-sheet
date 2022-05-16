@@ -1,6 +1,6 @@
-import cx from 'classnames'
+import { animated, config, useSpring } from '@react-spring/web'
+import cx from 'clsx'
 import { forwardRef, useEffect, useRef, useState } from 'react'
-import { animated, config, useSpring } from 'react-spring'
 import styles from './Hero.module.css'
 
 const subtitle = 'Accessible, Delightful, and Performant'
@@ -127,7 +127,7 @@ export default function Hero({ className }: { className?: string }) {
             />
             <animated.path
               style={{
-                fill: state.interpolate({ output: ['#fed7e6', '#FC9EC2'] }),
+                fill: state.to({ output: ['#fed7e6', '#FC9EC2'] }),
               }}
               fillRule="evenodd"
               clipRule="evenodd"
@@ -139,14 +139,6 @@ export default function Hero({ className }: { className?: string }) {
               className="transform-gpu origin-center"
               style={{
                 ['--tw-translate-y' as any]: y,
-                /*
-                ['--tw-scale-x' as any]: state.interpolate({
-                  output: [0.9, 1],
-                }),
-                ['--tw-scale-y' as any]: state.interpolate({
-                  output: [0.9, 1],
-                }),
-                // */
               }}
             >
               <path

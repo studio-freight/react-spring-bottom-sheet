@@ -5,6 +5,8 @@
 // It also ensures that when transitioning to open on mount the state is always clean, not affected by previous states that could
 // cause race conditions.
 
+import { animated, config } from '@react-spring/web'
+import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react'
 import { useMachine } from '@xstate/react'
 import React, {
   useCallback,
@@ -12,8 +14,6 @@ import React, {
   useImperativeHandle,
   useRef,
 } from 'react'
-import { animated, config } from 'react-spring'
-import { rubberbandIfOutOfBounds, useDrag } from 'react-use-gesture'
 import {
   useAriaHider,
   useFocusTrap,
@@ -450,13 +450,13 @@ export const BottomSheet = React.forwardRef<
   useEffect(() => {
     const elem = scrollRef.current
 
-    const preventScrolling = e => {
+    const preventScrolling = (e) => {
       if (preventScrollingRef.current) {
         e.preventDefault()
       }
     }
 
-    const preventSafariOverscroll = e => {
+    const preventSafariOverscroll = (e) => {
       if (elem.scrollTop < 0) {
         requestAnimationFrame(() => {
           elem.style.overflow = 'hidden'
@@ -486,7 +486,7 @@ export const BottomSheet = React.forwardRef<
     down,
     first,
     last,
-    memo = spring.y.getValue() as number,
+    memo = spring.y.get() as number,
     movement: [, _my],
     tap,
     velocity,
@@ -563,7 +563,7 @@ export const BottomSheet = React.forwardRef<
         newY = maxSnapRef.current
       }
 
-      preventScrollingRef.current = newY < maxSnapRef.current;
+      preventScrollingRef.current = newY < maxSnapRef.current
     } else {
       preventScrollingRef.current = false
     }
@@ -666,7 +666,12 @@ export const BottomSheet = React.forwardRef<
             {header}
           </div>
         )}
-        <div key="scroll" data-rsbs-scroll ref={scrollRef} {...(expandOnContentDrag ? bind({ isContentDragging: true }) : {})}>
+        <div
+          key="scroll"
+          data-rsbs-scroll
+          ref={scrollRef}
+          {...(expandOnContentDrag ? bind({ isContentDragging: true }) : {})}
+        >
           <div data-rsbs-content ref={contentRef}>
             {children}
           </div>

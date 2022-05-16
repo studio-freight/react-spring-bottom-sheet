@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import cx from 'clsx'
 import type { NextPage } from 'next'
 import { useRef, useState } from 'react'
 import scrollIntoView from 'smooth-scroll-into-view-if-needed'
@@ -141,13 +141,14 @@ const ScrollableFixturePage: NextPage<GetStaticProps> = ({
             </div>
             <div className="grid w-full">
               <Button
-                  className={[
-                    ' text-sm px-2 py-1',
-                    { 'text-xl': false, 'px-7': false, 'py-3': false },
-                  ]}
-                  onClick={() => setExpandOnContentDrag(!expandOnContentDrag)}
-                >
-                {expandOnContentDrag ? 'Disable' : 'Enable'} expand on content drag
+                className={[
+                  ' text-sm px-2 py-1',
+                  { 'text-xl': false, 'px-7': false, 'py-3': false },
+                ]}
+                onClick={() => setExpandOnContentDrag(!expandOnContentDrag)}
+              >
+                {expandOnContentDrag ? 'Disable' : 'Enable'} expand on content
+                drag
               </Button>
             </div>
             <p>

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import cx from 'classnames'
+import cx from 'clsx'
 import { useState } from 'react'
 
 export default function FaviconsPlaygroundPage() {

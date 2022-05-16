@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import cx from 'clsx'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from './StickyNugget.module.css'
